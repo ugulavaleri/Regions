@@ -154,3 +154,6 @@
 /Users/ugulava/Desktop/TestDotnet/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/ugulava/Desktop/TestDotnet/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
 /Users/ugulava/Desktop/TestDotnet/bin/Debug/net9.0/AutoMapper.dll
+/Users/ugulava/Desktop/TestDotnet/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/ugulava/Desktop/TestDotnet/bin/Debug/net9.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/ugulava/Desktop/TestDotnet/obj/Debug/net9.0/TestDotnet.sourcelink.json
