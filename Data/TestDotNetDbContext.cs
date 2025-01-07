@@ -5,7 +5,7 @@ namespace TestDotnet.Data;
 
 public class TestDotNetDbContext:DbContext
 {
-    public TestDotNetDbContext(DbContextOptions dbContextOptions): base(dbContextOptions) { }
+    public TestDotNetDbContext(DbContextOptions<TestDotNetDbContext> dbContextOptions): base(dbContextOptions) { }
 
     public DbSet<Difficulty> Difficulties { get; set; }
     public DbSet<Region> Regions { get; set; }
@@ -16,7 +16,7 @@ public class TestDotNetDbContext:DbContext
         base.OnModelCreating(modelBuilder);
 
         // this is not good practice anymore.
-        // now best is to use UseSeeding and UseAsyncSeeding methods when configuring db context in Pogram.cs
+        // now best is to use UseSeeding and UseAsyncSeeding methods when configuring db context in Program.cs
         // https://learn.microsoft.com/en-us/ef/core/modeling/data-seeding#model-seed-data
         List<Difficulty> difficulties = new List<Difficulty>()
         {

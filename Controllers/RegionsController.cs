@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TestDotnet.CustomActionFilters;
@@ -23,6 +24,7 @@ namespace TestDotnet.Controllers
         }
         
         [HttpGet]
+        [Authorize(Roles = "reader")]
         public async Task<IActionResult> Index()
         {
             List<Region> regions = await _regionRepository.IndexAsync();
@@ -48,6 +50,7 @@ namespace TestDotnet.Controllers
             return Ok(regionsDto);
         }
         [HttpGet("{id:guid}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> Show([FromRoute] Guid id)
         {
             Region? region = await _regionRepository.ShowAsync(id);
@@ -69,6 +72,7 @@ namespace TestDotnet.Controllers
         
         [HttpPost]
         [ValidateModel]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> Create([FromBody] AddRegionRequestDto addRegionRequestDto)
         {
             Region region = await _regionRepository.CreateAsync(addRegionRequestDto);
@@ -89,6 +93,7 @@ namespace TestDotnet.Controllers
 
         [HttpPut("{id:guid}")]
         [ValidateModel]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRegionRequestDto updateRegionRequestDto)
         {
             Region? region = await _regionRepository.UpdateAsync(id, updateRegionRequestDto);
@@ -110,6 +115,7 @@ namespace TestDotnet.Controllers
         }
 
         [HttpDelete("{id:guid}")]
+        [Authorize(Roles = "writer,reader")] // either writer or reader
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             Region? region = await _regionRepository.DeleteAsync(id);
